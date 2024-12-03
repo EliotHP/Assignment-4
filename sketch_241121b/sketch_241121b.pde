@@ -2,12 +2,12 @@ superCodeBoy SCBObject;
 
 void setup() {
   size(400,400);
+    SCBObject = new superCodeBoy();
   imageMode(CENTER);
 }
   
 void draw(){
-  
-  SCBObject = new superCodeBoy();
+ background(255);
   SCBObject.move();
 }
 

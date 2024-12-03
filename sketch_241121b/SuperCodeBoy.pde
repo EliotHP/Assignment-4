@@ -11,11 +11,16 @@ PImage SuperCodeBoyJumpL1;
 PImage SuperCodeBoyJumpR1;
 Boolean WalkR = false;
 Boolean WalkL = false;
-Boolean Left = true;
-Boolean Right = false;
+Boolean Left = false;
+Boolean Right = true;
 Boolean JumpL = false;
 Boolean JumpR = false;
 PVector position;
+float speed = 2;
+float gravity = 2;
+float groundY = 200;
+float velocityY = 0;
+
 
  superCodeBoy() {
   SuperCodeBoyJumpL1 = loadImage("SuperCodeBoyJumpL1.png");
@@ -35,8 +40,10 @@ PVector position;
   
     
     SuperCodeBoyR = new PImage[2];
-  SuperCodeBoyR[0] = loadImage("SuperCodeBoyR1.png");
-  SuperCodeBoyR[1] = loadImage("SuperCodeBoyR2.png");
+  SuperCodeBoyR[0] = loadImage("SuperCodeBoyR3.png");
+  SuperCodeBoyR[1] = loadImage("SuperCodeBoyR4.png");
+  
+  position = new PVector(width/2,groundY);
   
   
 }
@@ -48,24 +55,27 @@ if (frameCount % 10 == 0) {
     WalkLFrame = (WalkLFrame + 1) %  SuperCodeBoyWalkL.length;
     WalkRFrame = (WalkRFrame + 1) % SuperCodeBoyWalkR.length;
 }
+ velocityY += gravity;
+    position.y += velocityY;
+    if (position.y > groundY) {
+      position.y = groundY;
+      velocityY = 0;
+    }
 
 if (WalkL) {
-  image(SuperCodeBoyWalkL[WalkLFrame], 0, 0);
-}
-if (WalkR) {
-  image(SuperCodeBoyWalkR[WalkRFrame], 0, 0);
-}
-if (Left) {
-  image(SuperCodeBoyL[LeftFrame], 0, 0);
-}
-  if (Right) {
-  image(SuperCodeBoyR[RightFrame], 0, 0);
-  }
-  if (JumpR) {
-  image(SuperCodeBoyJumpR1, 0, 0);
-  }
-    if (JumpL) {
-  image(SuperCodeBoyJumpL1, 0, 0);
+  position.x -= speed;
+  image(SuperCodeBoyWalkL[WalkLFrame], position.x, position.y);
+}else if (WalkR) {
+  position.x += speed;
+  image(SuperCodeBoyWalkR[WalkRFrame], position.x, position.y);
+}else if (Left) {
+  image(SuperCodeBoyL[LeftFrame], position.x, position.y);
+}else if (Right) {
+  image(SuperCodeBoyR[RightFrame], position.x, position.y);
+  }else if (JumpR) {
+  image(SuperCodeBoyJumpR1, position.x, position.y);
+  }else if (JumpL) {
+  image(SuperCodeBoyJumpL1, position.x, position.y);
     }
 
 }
@@ -73,26 +83,32 @@ if (Left) {
 void keyPressed() {
   if(key == 'd'){
     WalkR = true;
+    Left = false;
   }else if(key == 'a'){
     WalkL = true;
+    Right = false;
   }else if(key == ' '){
     if(Right == true||WalkR == true) {
       Right = false;
-      WalkR = false;
+      JumpL = false;
       JumpR = true;
+      velocityY = -30;
     }else if(Left == true||WalkL == true){
      Left = false;
-     WalkL = false;
+     JumpR = false;
      JumpL = true;
+     velocityY = -30;
   }
 }
 }
 void keyReleased() {
   if(key == 'a'){
     WalkL = false;
+    Right = false;
     Left = true;
   }else if(key == 'd'){
     WalkR = false;
+    Left = false;
     Right = true;
   }
 }
