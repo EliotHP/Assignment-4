@@ -40,7 +40,7 @@ void draw() {
 
 
 
-  float offsetX = constrain(-SCBObject.position.x + width / 2, -1600, 0); 
+  float offsetX = constrain(-SCBObject.position.x + width / 2, -1600, 0);
   float offsetY = 0;
 
 
@@ -49,7 +49,7 @@ void draw() {
   for (block b : blocks) {
     b.display();
   }
-    noStroke();
+  noStroke();
   fill(205, 210, 216);
   rect(80, 100, 220, 20);
   rect(80, 120, 20, 40);
@@ -68,37 +68,39 @@ void draw() {
   rect(120, 20, 20, 20);
   rect(240, 20, 20, 20);
   //Wall Details
-  fill(146,158,176);
-rect(1500,0,800,400);
-rect(320, 0, 60,400);
-rect(1000, 0, 60,400);
-//desks
-fill(88,90,95);
-rect(70,205,90,40);
-rect(450,205,90,40);
-rect(650,205,90,40);
-rect(850,205,90,40);
-//computers
-fill(195,197,201);
-rect(85,155,60,40);
-rect(465,155,60,40);
-rect(665,155,60,40);
-rect(865,155,60,40);
+  fill(146, 158, 176);
+  rect(1500, 0, 800, 400);
+  rect(320, 0, 60, 400);
+  rect(1000, 0, 60, 400);
+  stroke(0);
+  strokeWeight(2.5);
+  //desks
+  fill(88, 90, 95);
+  rect(70, 205, 90, 40);
+  rect(450, 205, 90, 40);
+  rect(650, 205, 90, 40);
+  rect(850, 205, 90, 40);
+  //computers
+  fill(195, 197, 201);
+  rect(85, 155, 60, 40);
+  rect(465, 155, 60, 40);
+  rect(665, 155, 60, 40);
+  rect(865, 155, 60, 40);
 
-fill(173,175,180);
-rect(105,195,20,10);
-rect(485,195,20,10);
-rect(685,195,20,10);
-rect(885,195,20,10);
+  fill(173, 175, 180);
+  rect(105, 195, 20, 10);
+  rect(485, 195, 20, 10);
+  rect(685, 195, 20, 10);
+  rect(885, 195, 20, 10);
 
-fill(0);
-rect(90,160,50,30);
-rect(470,160,50,30);
-rect(670,160,50,30);
-rect(870,160,50,30);
-//floor
-  fill(31,59,106);
-rect(0,245,2000,200);
+  fill(0);
+  rect(90, 160, 50, 30);
+  rect(470, 160, 50, 30);
+  rect(670, 160, 50, 30);
+  rect(870, 160, 50, 30);
+  //floor
+  fill(31, 59, 106);
+  rect(0, 245, 2000, 200);
 
 
 
