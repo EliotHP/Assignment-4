@@ -9,6 +9,7 @@ class block {
   }
 
   void display() {
+    stroke(0);
     strokeWeight(2.5);
     fill(151, 151, 151);
     rect(position.x, position.y, width, height);

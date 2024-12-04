@@ -86,7 +86,9 @@ class superCodeBoy {
       image(SuperCodeBoyJumpL1, position.x, position.y);
     }
   }
-
+  void resetPosition() {
+    position.set(100, 200);
+  }
   void keyPressed() {
     if (key == 'd') {
       WalkR = true;
