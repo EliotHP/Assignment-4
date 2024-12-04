@@ -9,7 +9,8 @@ class block {
   }
   
   void display(){
-    fill(150,150,255);
+    noStroke();
+    fill(151,151,151);
     rect(position.x,position.y,width,height);
   }
   

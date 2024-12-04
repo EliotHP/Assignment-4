@@ -9,11 +9,15 @@ boolean GameWin = false;
 boolean GameRun = true;
 
 void setup() {
-  size(1200,400);
- blocks = new block[3]; 
-  blocks[0] = new block(100, 200, 100, 20); 
-  blocks[1] = new block(200, 180, 100, 20); 
-  blocks[2] = new block(300, 160, 100, 20); 
+  size(1600,400);
+ blocks = new block[7]; 
+  blocks[0] = new block(200, 185, 60, 60); 
+  blocks[1] = new block(400, 80, 400, 60); 
+  blocks[2] = new block(1100, 210, 200, 40); 
+  blocks[3] = new block(1140, 170, 160, 40);
+    blocks[4] = new block(1180, 130, 120, 40); 
+       blocks[5] = new block(1220, 90, 80, 40); 
+          blocks[6] = new block(1260, 50, 40, 40); 
   
     SCBObject = new superCodeBoy(blocks);
     bugObject = new Bug(200, 3);
