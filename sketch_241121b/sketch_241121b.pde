@@ -13,7 +13,7 @@ boolean GameWin = false;
 boolean GameRun = true;
 
 void setup() {
-  size(1600, 400);
+  size(400, 400);
   blocks = new block[7];
   blocks[0] = new block(200, 185, 60, 60);
   blocks[1] = new block(400, 80, 400, 60);
@@ -95,7 +95,7 @@ fill(0);
 rect(90,160,50,30);
 rect(470,160,50,30);
 rect(670,160,50,30);
-rect(8d70,160,50,30);
+rect(870,160,50,30);
 //floor
   fill(31,59,106);
 rect(0,245,2000,200);
