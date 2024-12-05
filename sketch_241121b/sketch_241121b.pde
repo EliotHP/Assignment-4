@@ -13,6 +13,7 @@ SoundFile theme;
 boolean GameOver = false;
 boolean GameWin = false;
 boolean GameRun = true;
+PImage Kit;
 
 void setup() {
   size(400, 400);
@@ -36,6 +37,7 @@ void setup() {
 //load SoundFiles
   jump = new SoundFile(this, "jump.mp3");
   theme = new SoundFile(this, "theme.mp3");
+  Kit = loadImage("KitBarry.png");
 }
 
 void draw() {
@@ -96,6 +98,8 @@ void draw() {
   rect(485, 195, 20, 10);
   rect(685, 195, 20, 10);
   rect(885, 195, 20, 10);
+
+image(Kit, 1500, 190);
 
   fill(0);
   rect(90, 160, 50, 30);
