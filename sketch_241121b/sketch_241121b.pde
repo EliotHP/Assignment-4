@@ -1,5 +1,7 @@
+//import sound library
 import processing.sound.*;
 
+// load Objects, Booleans, ArrayList, and SoundFile
 superCodeBoy SCBObject;
 block[] blocks;
 Bug bugObject;
@@ -14,6 +16,7 @@ boolean GameRun = true;
 
 void setup() {
   size(400, 400);
+  //Initalizing objects and ArrayList. These are the blocks that are interactable
   blocks = new block[7];
   blocks[0] = new block(200, 185, 60, 60);
   blocks[1] = new block(400, 80, 400, 60);
@@ -29,7 +32,8 @@ void setup() {
   overObject = new GameOver();
   winObject = new GameWin();
   imageMode(CENTER);
-
+  
+//load SoundFiles
   jump = new SoundFile(this, "jump.mp3");
   theme = new SoundFile(this, "theme.mp3");
 }
@@ -37,18 +41,18 @@ void setup() {
 void draw() {
   background(134, 145, 162);
 
-
-
-
-  float offsetX = constrain(-SCBObject.position.x + width / 2, -1600, 0);
+//has screen follow SCB object. Got this from a YouTube video, still trying to 
+//figure it out myself
+  float offsetX = constrain(-SCBObject.position.x + width / 2, -1200, 0);
   float offsetY = 0;
-
 
   translate(offsetX, offsetY);
 
+//Display all blocks in the array list
   for (block b : blocks) {
     b.display();
   }
+  //Drawing background, which is really just a series of rectangles
   noStroke();
   fill(205, 210, 216);
   rect(80, 100, 220, 20);
@@ -103,19 +107,22 @@ void draw() {
   rect(0, 245, 2000, 200);
 
 
+//calling object functions
 
   doorObject.displayDoor();
   SCBObject.move();
   bugObject.bugDisplay();
   bugObject.bugMove();
 
-
+//set GameOver to true if SCB collides with bug
   if (bugObject.checkCollision(SCBObject.position)) {
     GameOver = true;
   }
+  //set GameWin to true if SCB collides with door
   if (doorObject.checkCollision(SCBObject.position)) {
     GameWin = true;
   }
+  //if GameOver or GameWin are true, stop the music
   if (GameOver) {
     overObject.display(SCBObject.position);
     theme.stop();
@@ -124,25 +131,31 @@ void draw() {
     winObject.display(SCBObject.position);
     theme.stop();
   }
+  //if GameRun is true, call the SCB reset function, play the theme, 
+  //and set GameRun to false
+  
   if (GameRun) {
     SCBObject.resetPosition();
     theme.play();
     GameRun = false;
   }
 }
-
+//Play jump noise when spacebar is pressed
+//call SCB keyPressed function
 void keyPressed() {
   SCBObject.keyPressed();
   if (key == ' ' && !jump.isPlaying()) {
     jump.play();
   }
+  //if 'y' is pressed, set game Win and Over to false, and Run to true, 
+  //initaiting restart
   if (key == 'y') {
     GameWin = false;
     GameOver = false;
     GameRun= true;
   }
 }
-
+//call SCB keyReleased function
 void keyReleased() {
   SCBObject.keyReleased();
 }
