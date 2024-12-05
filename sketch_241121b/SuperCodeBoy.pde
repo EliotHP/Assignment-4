@@ -87,7 +87,18 @@ class superCodeBoy {
       position.y = ground;
       velocity = 0;
       inJump = false;
+      //if JumpL or R is true when SCB is on ground, then set JumpL/R to false, 
+      //and Left/Right to true
+      if(JumpL){
+        JumpL = false;
+        Left = true;
     }
+    else if(JumpR){
+      JumpR = false;
+      Right = true;
+    }
+    }
+      
     //Setting purposes of Booleans. If Walk Left is true, then move x position to the left
     //and run left walking animation. If Walk Right is true, move right with right walking animation
     //etc
